@@ -69,7 +69,7 @@ methods: {
 
 
       try {
-        const response = await axios.get(`http://localhost:3000/api/tasks`, {
+        const response = await axios.get(`https://api-task-hub.onrender.com/api/tasks`, {
           params: {
             typeID: this.teamActual.id,
             userId: userID

@@ -10,7 +10,7 @@ export const useStore = defineStore('user', {
   actions: {
     async login(email, password) {
       try {
-        const response = await axios.post('http://localhost:3000/api/login', { email, password });
+        const response = await axios.post('https://api-task-hub.onrender.com/api/login', { email, password });
         const { name, id } = response.data.user;
         this.logged = true;
         this.name = name;
@@ -28,7 +28,7 @@ export const useStore = defineStore('user', {
     },
   async register(name, email, password, confirmPassword) {
       try {
-        const response = await axios.post('http://localhost:3000/api/register', {
+        const response = await axios.post('https://api-task-hub.onrender.com/api/register', {
           name,
           email,
           password,

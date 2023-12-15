@@ -166,7 +166,7 @@ export default {
   
     },
     isValidDateFormat(dateString) {
-      const regexDatePattern = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/; 
+      const regexDatePattern = /^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])$/;
       return regexDatePattern.test(dateString);
     },
     async crearTasca() {
@@ -176,13 +176,13 @@ export default {
 
       if (!isValidDate) {
         this.task.date = '';
-        this.errorMessage = 'La data no té un format vàlid! Format esperat: MM-DD';
+        this.errorMessage = 'La data no té un format vàlid! Format esperat: DD-MM';
         return; 
       }
         try {
           const taskData = this.task; 
 
-          const response = await axios.post('http://localhost:3000/api/tasks', taskData); 
+          const response = await axios.post('https://api-task-hub.onrender.com/api/tasks', taskData); 
 
           this.closeModal();
 

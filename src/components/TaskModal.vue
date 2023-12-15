@@ -236,7 +236,7 @@
       async deleteTask() {
         try {
           const taskId = this.task.id; // ID de la tarea que quieres eliminar
-          const response = await axios.delete(`http://localhost:3000/api/tasks/${taskId}`);
+          const response = await axios.delete(`https://api-task-hub.onrender.com/api/tasks/${taskId}`);
 
           this.closeModal();
           this.$emit('show-success', response.data.message);
@@ -252,7 +252,7 @@
       async acceptTask() {
         try {
           const taskId = this.task.id; // ID de la tasca a actualitzar
-          const response = await axios.put(`http://localhost:3000/api/tasks/${taskId}`, this.editedTask); // Crida a l'API amb les dades a actualitzar
+          const response = await axios.put(`https://api-task-hub.onrender.com/api/tasks/${taskId}`, this.editedTask); // Crida a l'API amb les dades a actualitzar
 
           this.closeModal();
           this.$emit('show-success', response.data.message);

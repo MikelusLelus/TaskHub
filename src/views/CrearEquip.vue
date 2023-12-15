@@ -68,7 +68,7 @@ export default {
    },
     methods: {
       fetchUsers() {
-        axios.get('http://localhost:3000/api/users')
+        axios.get('https://api-task-hub.onrender.com/api/users')
           .then(response => {
             const users = response.data; 
 

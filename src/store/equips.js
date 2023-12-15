@@ -9,7 +9,7 @@ export const useStore = defineStore('equips', {
   actions: {
     async fetchEquips(userID) {
         try {
-          const response = await axios.get(`http://localhost:3000/api/equips?userId=${userID}`);
+          const response = await axios.get(`https://api-task-hub.onrender.com/api/equips?userId=${userID}`);
           this.equips = response.data;
 
             // Afegeix IDs dels equips de l'usuari a la propietat userTeams
@@ -24,7 +24,7 @@ export const useStore = defineStore('equips', {
       },
       async createTeam(teamData) {
         try {
-          const response = await axios.post('http://localhost:3000/api/equips', teamData);
+          const response = await axios.post('https://api-task-hub.onrender.com/api/equips', teamData);
           const newTeam = response.data;
           this.equips.push(newTeam);
           console.log('Equip creat:', newTeam);
@@ -37,7 +37,7 @@ export const useStore = defineStore('equips', {
       },
       async updateTeam(equipId, updatedData) {
         try {
-          const response = await axios.put(`http://localhost:3000/api/equips/${equipId}`, updatedData);
+          const response = await axios.put(`https://api-task-hub.onrender.com/api/equips/${equipId}`, updatedData);
           console.log(response.data); // Missatge de confirmació d'actualització
           // Si cal, actualitza l'state dels equips després de l'èxit de l'actualització
           // Exemple: this.fetchEquips();
@@ -56,7 +56,7 @@ export const useStore = defineStore('equips', {
       },
       async deleteTeam(equipId) {
         try {
-          await axios.delete(`http://localhost:3000/api/equips/${equipId}`);
+          await axios.delete(`https://api-task-hub.onrender.com/api/equips/${equipId}`);
           this.equips = this.equips.filter(team => team.id !== equipId);
           this.userTeams = this.userTeams.filter(team => team.id !== equipId);
         } catch (error) {
