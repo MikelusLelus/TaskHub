@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "MIQUEL",
+    "members": [
+      {
+        "id": 3,
+        "name": "Robert Davis"
+      },
+      {
+        "id": 4,
+        "name": "Emma Wilson"
+      }
+    ],
+    "responsable": [
+      {
+        "id": 1,
+        "name": "John Smith"
+      }
+    ]
+  }
+]

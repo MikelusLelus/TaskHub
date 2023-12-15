@@ -1,0 +1,148 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "taskName": "Fer la Compra",
+      "description": "He de fer la compra per demà",
+      "state": "EN CURS",
+      "team": "PERSONAL",
+      "responsible": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "executor": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "date": "12-12",
+      "priority": "5",
+      "typeID": "USER1"
+    },
+    {
+      "id": 2,
+      "taskName": "Tria el títol",
+      "description": "Aquí has de ficar la descripció",
+      "state": "PER FER",
+      "team": "EQUIP SOL",
+      "responsible": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "executor": {
+        "id": 3,
+        "name": "Robert Davis"
+      },
+      "date": "12-30",
+      "priority": "5",
+      "typeID": "EQUIP1"
+    },
+    {
+      "id": 3,
+      "taskName": "Fer caca",
+      "description": "Aquí has de ficar la descripció",
+      "state": "EN CURS",
+      "team": "PERSONAL",
+      "responsible": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "executor": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "date": "12-12",
+      "priority": "1",
+      "typeID": "USER1"
+    },
+    {
+      "id": 4,
+      "taskName": "GELO",
+      "description": "Aquí has de ficar la descripció",
+      "state": "EN CURS",
+      "team": "PERSONAL",
+      "responsible": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "executor": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "date": "12-12",
+      "priority": "1",
+      "typeID": "USER1"
+    },
+    {
+      "id": 5,
+      "taskName": "Tria el títol",
+      "description": "Aquí has de ficar la descripció",
+      "state": "PER FER",
+      "team": "PERSONAL",
+      "responsible": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "executor": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "date": "12-12",
+      "priority": "1",
+      "typeID": "USER1"
+    },
+    {
+      "id": 6,
+      "taskName": "Tria el títol",
+      "description": "Aquí has de ficar la descripció",
+      "state": "ACABADES",
+      "team": "PERSONAL",
+      "responsible": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "executor": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "date": "12-12",
+      "priority": "1",
+      "typeID": "USER1"
+    },
+    {
+      "id": 7,
+      "taskName": "Tinc que fer el TFG",
+      "description": "Aquí has de ficar la descripció",
+      "state": "PER FER",
+      "team": "PERSONAL",
+      "responsible": {
+        "id": 12,
+        "name": "Miquel Aliaga Checa"
+      },
+      "executor": {
+        "id": 12,
+        "name": "Miquel Aliaga Checa"
+      },
+      "date": "12-17",
+      "priority": "1",
+      "typeID": "USER12"
+    },
+    {
+      "id": 8,
+      "taskName": "Tria el dsadsa",
+      "description": "Aquí has de ficar la descripció",
+      "state": "PER FER",
+      "team": "PERSONAL",
+      "responsible": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "executor": {
+        "id": 1,
+        "name": "John Smith"
+      },
+      "date": "12-10",
+      "priority": "4",
+      "typeID": "USER1"
+    }
+  ]
+}
