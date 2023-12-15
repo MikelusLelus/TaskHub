@@ -102,7 +102,6 @@ import { useStore as useUserStore } from '../store/user';
             await storeEquip.fetchEquips(userId);
 
           } catch (error) {
-            // Mostrem el missatge d'error rebut de l'API al component
             this.errorMessage = error;
           }
         }
@@ -112,7 +111,6 @@ import { useStore as useUserStore } from '../store/user';
         const store = useUserStore();
         try {
           await store.register(this.name, this.email, this.password, this.confirmPassword);
-          // Altres lògiques després del registre
           this.name = '';
           this.email = '';
           this.password = '';
@@ -144,7 +142,7 @@ import { useStore as useUserStore } from '../store/user';
           return false;
         }
 
-        return true; // Retorna true si les validacions són correctes
+        return true; 
       },
       validateRegisterForm() {
         if (!this.name || !this.email || !this.password || !this.confirmPassword) {
@@ -173,7 +171,7 @@ import { useStore as useUserStore } from '../store/user';
           return false;
         }
 
-        return true; // Retorna true si las validaciones son correctas
+        return true; 
     }, 
     }
   };
@@ -187,11 +185,11 @@ import { useStore as useUserStore } from '../store/user';
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Opacitat fons */
+    background-color: rgba(0, 0, 0, 0.5); 
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Asegura que el modal estigui per sobre de la resta del contingut */
+    z-index: 9999; 
   }
 
   .modal-container {

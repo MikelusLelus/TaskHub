@@ -15,16 +15,14 @@ export const useStore = defineStore('user', {
         this.logged = true;
         this.name = name;
         this.id = id;
-        console.log('Inici de sessió correcte');
       } catch (error) {
-        throw error.response.data.error; // Retorna el missatge d'error rebut de l'API
+        throw error.response.data.error; 
       }
     },
     logout() {
       this.logged = false;
       this.name = '';
       this.id = '';
-      console.log('Sessió tancada');
     },
   async register(name, email, password, confirmPassword) {
       try {

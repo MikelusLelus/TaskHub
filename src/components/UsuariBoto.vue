@@ -50,7 +50,7 @@
   </script>
   
   <style scoped>
-  /* Aquí pots afegir estils al teu botó si és necessari */
+ 
   button {
     border: 5px solid #fff;
     background-color: #1565c0;

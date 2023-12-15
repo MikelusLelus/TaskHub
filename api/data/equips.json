@@ -1,21 +1,17 @@
 [
   {
     "id": 1,
-    "name": "MIQUEL",
+    "name": "EQUIP GERMANS",
     "members": [
       {
-        "id": 3,
-        "name": "Robert Davis"
-      },
-      {
-        "id": 4,
-        "name": "Emma Wilson"
+        "id": 2,
+        "name": "Enric Aliaga Checa"
       }
     ],
     "responsable": [
       {
         "id": 1,
-        "name": "John Smith"
+        "name": "Miquel Aliaga Checa"
       }
     ]
   }

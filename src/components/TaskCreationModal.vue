@@ -96,22 +96,17 @@ export default {
       const storeEquip = useEquipStore();
       const equips = storeEquip.equips;
 
-      // ID de l'equip seleccionat
       const selectedTeamId = this.task.team;
 
-      // Busca l'equip seleccionat a partir de l'ID
       const selectedTeam = equips.find((equip) => equip.name.toUpperCase() === selectedTeamId);
 
-      // Obté els membres de l'equip seleccionat
       const teamMembers = selectedTeam ? selectedTeam.members : [];
 
-      // Crea una llista d'opcions per al select d'executors
       const executorOptions = teamMembers.map((member) => ({
         id: member.id,
         name: member.name,
       }));
 
-       // Afegeix també els responsables com a opcions d'executors si són diferents
       const responsible = this.task.responsible;
       const executorIds = executorOptions.map((executor) => executor.id);
       
@@ -196,7 +191,6 @@ export default {
 </script>
 
 <style scoped>
-  /* Estils per al modal */
 
   .modal-overlay {
     position: fixed;
@@ -204,11 +198,11 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Opacitat fons */
+    background-color: rgba(0, 0, 0, 0.5); 
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Asegura que el modal estigui per sobre de la resta del contingut */
+    z-index: 9999; 
   }
   
   .modal-container {
@@ -234,9 +228,9 @@ export default {
     background-color: #fff;
     border-radius: 30px;
     padding: 0px 0px 20px 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ombra */
-    overflow-y: auto; /* Afegeix una barra d'scroll vertical si el contingut és més gran que la finestra */
-    max-height: 80vh; /* Limita la mida del contingut per evitar que s'escapi de la finestra */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    overflow-y: auto; 
+    max-height: 80vh; 
   }
  .task-description {
   margin: 0 auto;
@@ -306,7 +300,7 @@ export default {
   text-align: center;
   font-size: 16px;
   background-color: #1565c0;
-  appearance: none; /* Elimina l'estil estàndard dels selects del navegador */
+  appearance: none; 
   width: 100%;
   height: auto;
   font-weight: bold;
@@ -320,7 +314,7 @@ export default {
   text-align: center;
   font-size: 16px;
   background-color: #b3e5fc;
-  appearance: none; /* Elimina l'estil estàndard dels selects del navegador */
+  appearance: none; 
   width: 100%;
   height: auto;
   font-weight: bold;
@@ -387,7 +381,7 @@ export default {
   display: block;
   width: 80%;
   margin: 10px auto;
-  border-bottom: 3px solid #1565c0; /* Color de la ralla */
+  border-bottom: 3px solid #1565c0; 
 }
 
 @media screen and (max-width: 1024px) {

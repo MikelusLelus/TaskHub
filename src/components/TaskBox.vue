@@ -46,23 +46,19 @@
     },
     methods: {
     calculateBackgroundColor(priority) {
-      const opacityMax = 1; // Opacitat màxima corresponent a la prioritat màxima (1 és opacitat completa)
-      const opacityMin = 0.2; // Opacitat mínima corresponent a la prioritat mínima (0.2 és opacitat reduïda)
-      const priorityMax = 5; // Prioritat màxima
-      const priorityMin = 1; // Prioritat mínima
+      const opacityMax = 1; 
+      const opacityMin = 0.2; 
+      const priorityMax = 5; 
+      const priorityMin = 1; 
       
-      // Càlcul de l'opacitat basat en la prioritat de la tasca
       const opacity = opacityMin + ((priority - priorityMin) * (opacityMax - opacityMin)) / (priorityMax - priorityMin);
       
-      // Retorna el color de fons amb l'opacitat aplicada utilitzant rgba()
-      return `rgba(21, 101, 192, ${opacity})`; // Ajusta els valors de color (en aquest cas és blau) segons la teva preferència
+      return `rgba(21, 101, 192, ${opacity})`;
     },
     openModal() {
-      // Obre la finestra modal
       this.isModalOpen = true;
     },
     closeModal() {
-      // Tanca la finestra modal
       this.isModalOpen = false;
     },
     handleSuccessMessage(message) {
@@ -90,7 +86,7 @@
 .task-info {
   background-color: #1565c0;
   padding: 15px;
-  border-radius: 30px; /* Bord arrodonit */
+  border-radius: 30px; 
   width: 25%;
   color: #fff;
   font-weight: bold;
@@ -100,7 +96,7 @@
   padding: 15px;
   background-color: #b3e5fc;
   margin: 0 auto;
-  border-radius: 30px; /* Bord arrodonit */
+  border-radius: 30px; 
   width: 80%;
   font-weight: 600;
 }

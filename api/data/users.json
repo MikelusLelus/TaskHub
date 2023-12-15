@@ -1,74 +1,14 @@
 [
   {
     "id": 1,
-    "name": "John Smith",
-    "email": "john.smith@gmail.com",
-    "password": "123456"
+    "name": "Miquel Aliaga Checa",
+    "email": "miquelaliaga@gmail.com",
+    "password": "$2b$10$cWQKaVNh7JxVuTDYhkN67ODjjkYzkGaWTXLZp.iBGgW3l2WfqIHo."
   },
   {
     "id": 2,
-    "name": "Alice Johnson",
-    "email": "alice.johnson@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 3,
-    "name": "Robert Davis",
-    "email": "robert.davis@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 4,
-    "name": "Emma Wilson",
-    "email": "emma.wilson@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 5,
-    "name": "Michael Brown",
-    "email": "michael.brown@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 6,
-    "name": "Sophia Martinez",
-    "email": "sophia.martinez@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 7,
-    "name": "William Garcia",
-    "email": "william.garcia@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 8,
-    "name": "Olivia Miller",
-    "email": "olivia.miller@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 9,
-    "name": "Daniel Lee",
-    "email": "daniel.lee@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 10,
-    "name": "Ava Rodriguez",
-    "email": "ava.rodriguez@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 11,
-    "name": "Ethan Hernandez",
-    "email": "ethan.hernandez@gmail.com",
-    "password": "123456"
-  },
-  {
-    "id": 12,
-    "name": "Miquel Aliaga Checa",
-    "email": "miquelaliaga@gmail.com",
-    "password": "123456"
+    "name": "Enric Aliaga Checa",
+    "email": "enricaliaga@gmail.com",
+    "password": "$2b$10$K0E2wrDPcmXwWQxn.Ct6YuBUl7eLDY1C2a2w42UDtvGmt0yETREqu"
   }
 ]

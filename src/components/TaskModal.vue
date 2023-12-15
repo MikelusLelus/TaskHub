@@ -70,11 +70,22 @@
         <div class="notes-div">
           <h3>Notes:</h3>
           <span class="ralla-span"></span>
-          <p>Encara falta per fer</p>
+          <ul v-if="task.comments && task.comments.length > 0" class="comment-list">
+            <li v-for="comment in task.comments" :key="comment.id">
+              <div class="comment">
+                <div class="user-initials">{{ comment.user.name.substring(0, 2) }}</div>
+                <div class="comment-text">{{ comment.text }}</div>
+              </div>
+            </li>
+          </ul>
+          <form @submit.prevent class="comment-form">
+            <textarea v-model="newComment" rows="1" placeholder="Escriu i Prem Enter per afegir un comentari" @keydown.enter.prevent="addNewComment"></textarea>
+          </form>
+
         </div>
         <div class="butons-editar">
           <button class="buto-eliminar" @click="confirmDeletion">Eliminar</button>
-          <button class="buto-acceptar" @click="confirmAcceptance">Acceptar</button>
+          <button class="buto-acceptar" @click="confirmAcceptance">Actualitzar</button>
         </div>
 
         <ConfirmModal
@@ -122,20 +133,17 @@
         errorMessage: '',
         showConfirmModal: false,
         confirmationMessage: '',
+        newComment: '',
       };
     },
     computed: {
       filteredStatusOptions() {
-        // Elimina l'estat actual de les opcions d'estat disponibles
         const filteredOptions = this.statusOptions.filter(option => option !== this.task.state);
         return filteredOptions;
         },
       filteredPriorityOptions() {
-        const taskPriority = parseInt(this.task.priority); // Converteix la prioritat de la tasca a enter
-
-        // Crea un array amb els valors de prioritat de 2 a 5 (excloent la prioritat actual)
+        const taskPriority = parseInt(this.task.priority); 
         const priorityOptions = [1, 2, 3, 4, 5].filter(option => option !== taskPriority);
-
         return priorityOptions;
         },
       filteredMembers() {
@@ -197,7 +205,7 @@
       this.editedTask.date = inputDate;
       },
       isValidDateFormat(dateString) {
-        const regexDatePattern = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/; // Format MES-DIA (MM-DD)
+        const regexDatePattern = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
         return regexDatePattern.test(dateString);
       },
       confirmAcceptance() {
@@ -207,20 +215,18 @@
           return;
         }
 
-        // Verifica si hay cambios realizados en editedTask
+
       if (Object.keys(this.editedTask).length === 0 && this.editedTask.constructor === Object) {
         this.errorMessage = 'No has realitzat cap canvi en cap terme.';
         return;
       }
 
-      // Verifica si la fecha tiene un formato válido
       if (this.editedTask.date && !this.isValidDateFormat(this.editedTask.date.trim())) {
         this.errorMessage = 'La data no té un format vàlid! Format esperat: MM-DD';
         return;
       }
  
-        // Si l'usuari és el responsable, obre el modal de confirmació
-        this.confirmationMessage = 'Estàs segur que vols acceptar aquesta tasca?';
+        this.confirmationMessage = 'Estàs segur que vols actualitzar aquesta tasca?';
         this.showConfirmModal = true;
       },
       confirmDeletion() {
@@ -229,60 +235,81 @@
           return;
         }
 
-        // Si l'usuari és el responsable, obre el modal de confirmació
         this.confirmationMessage = 'Estàs segur que vols eliminar aquesta tasca?';
         this.showConfirmModal = true;
       },
       async deleteTask() {
         try {
-          const taskId = this.task.id; // ID de la tarea que quieres eliminar
+          const taskId = this.task.id; 
           const response = await axios.delete(`https://api-task-hub.onrender.com/api/tasks/${taskId}`);
 
           this.closeModal();
           this.$emit('show-success', response.data.message);
-          console.log(response.data); // Mensaje de confirmación de eliminación
-
-          // Lógica adicional si es necesaria después de la eliminación
+  
         } catch (error) {
-          console.error('Error al eliminar la tarea:', error);
-          // Manejo de errores si la solicitud falla
+          console.error("S'ha produït un error en eliminar la tasca.", error);
         }
       },
 
       async acceptTask() {
+
+        console.log(this.editedTask);
         try {
-          const taskId = this.task.id; // ID de la tasca a actualitzar
-          const response = await axios.put(`https://api-task-hub.onrender.com/api/tasks/${taskId}`, this.editedTask); // Crida a l'API amb les dades a actualitzar
+          const taskId = this.task.id; 
+          const response = await axios.put(`https://api-task-hub.onrender.com/api/tasks/${taskId}`, this.editedTask); 
+
+          console.log(this.editedTask);
 
           this.closeModal();
           this.$emit('show-success', response.data.message);
 
         } catch (error) {
-          console.error('Error en actualitzar la tasca:', error);
-      
+          console.error("S'ha produït un error en actualitzar la tasca.", error);
         }
       },
       handleModalClose(confirmedAction) {
         if (confirmedAction) {
-          // Si se confirma la acción en el modal de confirmación
           if (this.confirmationMessage === 'Estàs segur que vols eliminar aquesta tasca?') {
-            // Si se confirma la eliminación, se llama a la función deleteTask
             this.deleteTask();
-          } else if (this.confirmationMessage === 'Estàs segur que vols acceptar aquesta tasca?') {
-            // Si se confirma la aceptación, se llama a la función acceptTask
+          } else if (this.confirmationMessage === 'Estàs segur que vols actualitzar aquesta tasca?') {
             this.acceptTask();
           }
         }
-
-        // Cerrar el modal de confirmación
         this.showConfirmModal = false;
+      },
+      async addNewComment() {
+        if (this.newComment.trim() !== '') {
+          try {
+
+            const userStore = useUserStore();
+            const userID = userStore.id;
+            const userName = userStore.name;
+
+            const newCommentData = {
+              text: this.newComment,
+              user: {
+                id: userID,
+                name: userName
+              }
+            };
+
+            const taskId = this.task.id; 
+
+            const response = await axios.post(`https://api-task-hub.onrender.com/api/tasks/${taskId}/comments`, newCommentData);
+
+            this.$emit('show-success', response.data.message);
+            this.newComment = ''; 
+          } catch (error) {
+            console.error('Error en afegir el nou comentari:', error);
+          }
+        }
       },
     },
   };
   </script>
   
   <style scoped>
-  /* Estils per al modal */
+
 
   .modal-overlay {
     position: fixed;
@@ -290,11 +317,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Opacitat fons */
+    background-color: rgba(0, 0, 0, 0.5); 
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Asegura que el modal estigui per sobre de la resta del contingut */
+    z-index: 9999; 
   }
   
   .modal-container {
@@ -320,9 +347,9 @@
     background-color: #fff;
     border-radius: 30px;
     padding: 0px 0px 20px 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Ombra */
-    overflow-y: auto; /* Afegeix una barra d'scroll vertical si el contingut és més gran que la finestra */
-    max-height: 80vh; /* Limita la mida del contingut per evitar que s'escapi de la finestra */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    overflow-y: auto; 
+    max-height: 80vh; 
   }
  .task-description {
   margin: 0 auto;
@@ -392,7 +419,7 @@
   text-align: center;
   font-size: 16px;
   background-color: #1565c0;
-  appearance: none; /* Elimina l'estil estàndard dels selects del navegador */
+  appearance: none; 
   width: 100%;
   height: auto;
   font-weight: bold;
@@ -406,7 +433,7 @@
   text-align: center;
   font-size: 16px;
   background-color: #b3e5fc;
-  appearance: none; /* Elimina l'estil estàndard dels selects del navegador */
+  appearance: none; 
   width: 100%;
   height: auto;
   font-weight: bold;
@@ -472,7 +499,7 @@
   display: block;
   width: 80%;
   margin: 10px auto;
-  border-bottom: 3px solid #1565c0; /* Color de la ralla */
+  border-bottom: 3px solid #1565c0; 
 }
 
 @media screen and (max-width: 1024px) {
@@ -509,6 +536,21 @@
   .butons-editar{
     flex-direction: column;
   }
+
+  .comment {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .user-initials {
+      margin-bottom: 10px; 
+    }
+
+    .comment-text {
+      margin-left: 0; 
+      width: 100%;
+    }
 }
 
 .error-message {
@@ -517,6 +559,50 @@
   margin-top: 5px;
   text-align: center;
 }
+
+textarea {
+    width: 80%;
+    margin: 10px auto 0;
+    padding: 10px;
+    resize: vertical;
+    text-align: center;
+    border-radius: 30px;
+    border: solid 3px #1565c0;
+  }
+
+  .comment-list {
+    list-style-type: none;
+    padding: 0;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .user-initials {
+    border: 5px solid #b3e5fc;
+    background-color: #1565c0;
+    border-radius: 30px; 
+    padding: 10px 20px;
+    max-width: 90px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .comment-text {
+    flex: 1;
+    border: 3px solid #b3e5fc;
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin-left: 10px;
+  }
+
   
   </style>
   

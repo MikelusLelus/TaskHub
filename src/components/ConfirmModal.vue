@@ -58,11 +58,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Opacitat fons */
+    background-color: rgba(0, 0, 0, 0.5); 
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Asegura que el modal estigui per sobre de la resta del contingut */
+    z-index: 9999; 
   }
 
   .modal-container {

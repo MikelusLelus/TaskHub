@@ -157,7 +157,6 @@ export default {
 </script>
 
 <style scoped>
-/* Estils per a la vista de creació d'equip */
 
 .modal-container {
     width: 40%;

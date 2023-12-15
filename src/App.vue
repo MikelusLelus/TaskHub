@@ -120,7 +120,7 @@ methods: {
 
 <style scoped>
 
-/* Estils de la barra superior */
+
 .top-bar {
   background-color: #1565c0; 
   color: #ffffff; 
@@ -137,7 +137,7 @@ methods: {
   font-weight: bold;
 }
 
-/* Estils del contingut principal */
+
 #app {
   background-color: #b3e5fc; 
   min-height: 100vh;  
