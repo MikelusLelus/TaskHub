@@ -205,8 +205,8 @@
       this.editedTask.date = inputDate;
       },
       isValidDateFormat(dateString) {
-        const regexDatePattern = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
-        return regexDatePattern.test(dateString);
+        const regexDatePattern = /^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])$/;
+      return regexDatePattern.test(dateString);
       },
       confirmAcceptance() {
         
@@ -222,7 +222,7 @@
       }
 
       if (this.editedTask.date && !this.isValidDateFormat(this.editedTask.date.trim())) {
-        this.errorMessage = 'La data no té un format vàlid! Format esperat: MM-DD';
+        this.errorMessage = 'La data no té un format vàlid! Format esperat: DD-MM';
         return;
       }
  
